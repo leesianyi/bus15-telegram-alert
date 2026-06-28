@@ -150,14 +150,7 @@ def format_eta(arrival: BusArrival) -> str:
     if arrival.eta_minutes is None:
         return "not available"
 
-    details = []
-    if arrival.load:
-        details.append(f"load {arrival.load}")
-    if arrival.bus_type:
-        details.append(f"type {arrival.bus_type}")
-
-    suffix = f" ({', '.join(details)})" if details else ""
-    return f"{arrival.eta_minutes} min{suffix}"
+    return f"{arrival.eta_minutes} min"
 
 
 def first_catchable_arrival(arrivals: list[BusArrival], walk_minutes: int) -> BusArrival | None:
